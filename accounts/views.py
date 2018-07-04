@@ -1,12 +1,25 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from    django.contrib.auth.forms   import  UserCreationForm 
+from    django.contrib.auth import  login   as  auth_login
+from    .forms  import  SignUpForm
 
 # Create your views here.
+# def signup(request):                
+#     # return  render(request, 'signup.html')
+#     form    =   UserCreationForm()              
+#     return  render(request, 'signup.html',  {'form':    form})
+
 def signup(request):                
-    # return  render(request, 'signup.html')
-    form    =   UserCreationForm()              
-    return  render(request, 'signup.html',  {'form':    form})
+    if  request.method  ==  'POST':                             
+        form    =   SignUpForm(request.POST)
+        if  form.is_valid(): 
+            user    =   form.save()  
+            auth_login(request, user)   
+            return  redirect('home')                
+        else:                               
+            form    =   SignUpForm()              
+        return  render(request, 'signup.html',  {'form': form})
 

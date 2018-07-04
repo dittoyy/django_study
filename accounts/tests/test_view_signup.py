@@ -3,12 +3,9 @@ from __future__ import unicode_literals
 
 from django.test import TestCase
 from    django.core.urlresolvers    import  reverse 
-from    django.urls import  resolve
-from   .views  import  signup
-from    .forms  import  SignUpForm
-from django.contrib.auth.models  import  User
-from    django.contrib.auth.forms   import  UserCreationForm
-
+from    django.urls import  resolve 
+from   ..views  import  signup
+from    ..forms  import  SignUpForm
 # from   .models import  Board,    Topic,  Post
 # from    .forms  import  NewTopicForm
 # # Create your tests here.
